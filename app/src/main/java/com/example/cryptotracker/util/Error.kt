@@ -1,3 +1,3 @@
-package com.example.cryptotracker.ui.util
+package com.example.cryptotracker.util
 
 interface Error
