@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.crypto.presentation.coin_list.components
+package com.example.cryptotracker.crypto.presentation.coin_list.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.plcoding.cryptotracker.crypto.presentation.modal.CoinUi
+import com.example.cryptotracker.crypto.presentation.modal.CoinUi
 
 @Composable
 fun CoinListItem(

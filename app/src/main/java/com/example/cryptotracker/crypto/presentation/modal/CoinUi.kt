@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.crypto.presentation.modal
+package com.example.cryptotracker.crypto.presentation.modal
 
 import androidx.annotation.DrawableRes
 
