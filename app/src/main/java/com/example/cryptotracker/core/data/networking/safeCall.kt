@@ -5,7 +5,6 @@ import com.example.cryptotracker.core.util.Result
 import io.ktor.client.statement.HttpResponse
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.ensureActive
-import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
 import kotlin.coroutines.coroutineContext
 
