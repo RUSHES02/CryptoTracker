@@ -1,4 +1,4 @@
-package com.example.cryptotracker.util
+package com.example.cryptotracker.core.util
 
 typealias DomainError = Error
 

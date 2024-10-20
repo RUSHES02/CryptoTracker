@@ -1,4 +1,4 @@
-package com.example.cryptotracker.util
+package com.example.cryptotracker.core.presentation
 
 import com.example.cryptotracker.R
 
