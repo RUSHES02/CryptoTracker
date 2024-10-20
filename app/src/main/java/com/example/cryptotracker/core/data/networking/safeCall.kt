@@ -1,7 +1,7 @@
 package com.example.cryptotracker.core.data.networking
 
-import com.example.cryptotracker.core.util.NetworkError
-import com.example.cryptotracker.core.util.Result
+import com.example.cryptotracker.core.domain.util.NetworkError
+import com.example.cryptotracker.core.domain.util.Result
 import io.ktor.client.statement.HttpResponse
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.ensureActive
