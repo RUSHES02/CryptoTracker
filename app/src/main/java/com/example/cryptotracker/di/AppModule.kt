@@ -1,4 +1,4 @@
-package com.example.di
+package com.example.cryptotracker.di
 
 import com.example.cryptotracker.core.data.networking.HttpClientFactory
 import com.example.cryptotracker.crypto.data.networking.RemoteCoinDataSource

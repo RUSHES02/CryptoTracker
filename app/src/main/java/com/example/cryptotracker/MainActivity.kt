@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.cryptotracker.core.domain.util.CoinListEvent
 import com.example.cryptotracker.core.presentation.toString
 import com.example.cryptotracker.core.presentation.util.ObserveAsEvents
+import com.example.cryptotracker.crypto.presentation.coin_details.CoinDetailsScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,10 +42,24 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-                    CoinListScreen(
-                        state = state,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    
+                    when {
+                        state.selectedCoin != null ->{
+                            CoinDetailsScreen(
+                                state = state,
+                                modifier = Modifier
+                                    .padding(innerPadding)
+                            )
+                        }
+                        
+                        else -> {
+                            CoinListScreen(
+                                state = state,
+                                modifier = Modifier.padding(innerPadding),
+                                onAction = coinListViewModel::onAction
+                            )
+                        }
+                    }
                 }
             }
         }
