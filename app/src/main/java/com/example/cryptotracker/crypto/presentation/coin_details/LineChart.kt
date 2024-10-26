@@ -88,8 +88,8 @@ fun LineChart(
 	Canvas(
 		modifier = modifier
 			.fillMaxSize()
-			.pointerInput(drawPoints, xLabelWidth){
-				detectHorizontalDragGestures{change, _ ->
+			.pointerInput(drawPoints, xLabelWidth) {
+				detectHorizontalDragGestures { change, _ ->
 					val newSelectedDataPointIndex = getSelectedDataPoint(
 						touchOffsetX = change.position.x,
 						triggerWidth = xLabelWidth,
@@ -99,7 +99,7 @@ fun LineChart(
 						(newSelectedDataPointIndex + visibleDataPointsIndices.first) in
 							visibleDataPointsIndices
 					
-					if (isShowingDataPoint){
+					if (isShowingDataPoint) {
 						onSelectedDataPoint(dataPoints[newSelectedDataPointIndex])
 					}
 				}
@@ -118,8 +118,10 @@ fun LineChart(
 		}
 		val maxXLabelWidth = xLabelTextLayoutResults.maxOfOrNull { it.size.width } ?: 0
 		val maxXLabelHeight = xLabelTextLayoutResults.maxOfOrNull { it.size.height } ?: 0
-		val maxXLabelLineCount = xLabelTextLayoutResults.maxOfOrNull { it.lineCount } ?: 1
-		val xLabelLineHeight = maxXLabelHeight / maxXLabelLineCount
+		val maxXLabelLineCount = xLabelTextLayoutResults.maxOfOrNull { it.lineCount } ?: 0
+		val xLabelLineHeight = if (maxXLabelLineCount > 0) {
+			maxXLabelHeight / maxXLabelLineCount
+		}else 0
 		
 		val viewPortHeightPx = size.height -
 			(xLabelLineHeight + 2 * verticalPaddingPx
