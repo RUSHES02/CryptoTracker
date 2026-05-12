@@ -3,6 +3,7 @@ package com.example.cryptotracker.crypto.domain
 import java.time.ZonedDateTime
 
 data class CoinPrice(
-	val dateTime: ZonedDateTime,
-	val priceUsd: Double
+    val symbol: String,
+	val priceUsd: Double,
+    val changePercent: Double
 )

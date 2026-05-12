@@ -8,6 +8,7 @@ import io.ktor.client.plugins.logging.ANDROID
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.plugins.websocket.WebSockets
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
@@ -21,7 +22,7 @@ object HttpClientFactory {
 				level = LogLevel.ALL
 				logger = Logger.ANDROID
 			}
-			
+            install(WebSockets)
 			install(ContentNegotiation){
 				json(
 					json = Json {

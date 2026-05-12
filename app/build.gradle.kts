@@ -1,8 +1,9 @@
 plugins {
-	alias(libs.plugins.android.application)
+    alias(libs.plugins.android.application)
 //	alias(libs.plugins.jetbrains.kotlin.android)
-	alias(libs.plugins.compose.compiler)
-	alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -21,9 +22,11 @@ android {
 	
 	buildTypes {
 		debug {
+            android.buildFeatures.buildConfig = true
+
 			buildConfigField("String", "BASE_URL", "\"https://api.coincap.io/v2\"")
 		}
-		
+
 		release {
 			isMinifyEnabled = false
 			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -58,6 +61,9 @@ dependencies {
 	implementation(libs.bundles.koin)
 	
 	implementation(libs.bundles.ktor)
+
+    implementation(libs.bundles.room)
+    ksp(libs.room.compiler)
 	
 	testImplementation(libs.junit)
 	

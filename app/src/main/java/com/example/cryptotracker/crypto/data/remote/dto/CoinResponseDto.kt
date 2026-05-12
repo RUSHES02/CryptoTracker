@@ -1,4 +1,4 @@
-package com.example.cryptotracker.crypto.data.networking.dto
+package com.example.cryptotracker.crypto.data.remote.dto
 
 import kotlinx.serialization.Serializable
 

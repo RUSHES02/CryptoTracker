@@ -1,14 +1,13 @@
 package com.example.cryptotracker.crypto.domain
 
-import com.example.cryptotracker.core.domain.util.NetworkError
-import com.example.cryptotracker.core.domain.util.Result
-import java.time.ZonedDateTime
+import com.example.cryptotracker.crypto.data.remote.dto.CoinDto
+import com.example.cryptotracker.crypto.data.remote.dto.CoinHistoryDto
 
 interface CoinDataSource {
-	suspend fun getCoins(): Result<List<Coin>, NetworkError>
-	suspend fun getCoinDetails(
-		coinId: String,
-		start: ZonedDateTime,
-		end: ZonedDateTime
-	): Result<List<CoinPrice>, NetworkError>
+
+    suspend fun getTopCoins(): List<CoinDto>
+
+    suspend fun getCoinHistory(
+        coinId: String
+    ): List<CoinHistoryDto>
 }
