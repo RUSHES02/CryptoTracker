@@ -2,6 +2,7 @@ package com.example.cryptotracker.core.data.networking
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.ANDROID
@@ -22,16 +23,26 @@ object HttpClientFactory {
 				level = LogLevel.ALL
 				logger = Logger.ANDROID
 			}
+
             install(WebSockets)
-			install(ContentNegotiation){
+
+            install(ContentNegotiation){
 				json(
 					json = Json {
 						ignoreUnknownKeys = true
+                        isLenient = true
+                        prettyPrint = false
 					}
 				)
 			}
-			
-			defaultRequest {
+
+            install(HttpTimeout) {
+                requestTimeoutMillis = 15_000
+                connectTimeoutMillis = 15_000
+                socketTimeoutMillis = 15_000
+            }
+
+            defaultRequest {
 				contentType(ContentType.Application.Json)
 			}
 		}

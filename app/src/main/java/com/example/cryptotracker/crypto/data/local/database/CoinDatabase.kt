@@ -11,5 +11,5 @@ import com.example.cryptotracker.crypto.data.local.entity.CoinEntity
 )
 abstract class CoinDatabase : RoomDatabase() {
 
-    abstract val coinDao: CoinDao
+    abstract fun coinDao(): CoinDao
 }
