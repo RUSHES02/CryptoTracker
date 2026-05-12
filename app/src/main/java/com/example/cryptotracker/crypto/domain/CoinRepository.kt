@@ -1,7 +1,6 @@
 package com.example.cryptotracker.crypto.domain
 
-import com.example.cryptotracker.core.domain.util.NetworkError
-import com.example.cryptotracker.core.domain.util.Result
+import com.example.cryptotracker.crypto.domain.model.Coin
 import kotlinx.coroutines.flow.Flow
 
 interface CoinRepository {
@@ -11,4 +10,6 @@ interface CoinRepository {
     suspend fun refreshCoins()
 
     suspend fun startRealtimeUpdates()
+
+    suspend fun stopRealtimeUpdates()
 }

@@ -1,7 +1,6 @@
 package com.example.cryptotracker.crypto.data.remote.networking
 
-import com.example.cryptotracker.crypto.data.remote.dto.CoinTickerDto
-import com.example.cryptotracker.crypto.domain.CoinWebSocketDataSource
+import com.example.cryptotracker.crypto.data.remote.dto.BinanceTickerDto
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.websocket.webSocket
 import io.ktor.http.HttpMethod
@@ -14,37 +13,33 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonObject
 
-class BinanceWebSocketDataSource : CoinWebSocketDataSource {
-
+class BinanceSocketDataSource(
     private val client: HttpClient
+) {
 
-    constructor(client: HttpClient) {
-        this.client = client
-    }
-
-    override fun observeTickerStream(
+    fun observeTickerStream(
         symbols: List<String>
-    ): Flow<CoinTickerDto> = flow {
+    ): Flow<BinanceTickerDto> = flow {
 
-        val streamPath = symbols.joinToString("/") {
-            "${it.lowercase()}usdt@ticker"
+        val streams = symbols.joinToString("/") {
+            "${it.lowercase()}@ticker"
         }
 
         client.webSocket(
             method = HttpMethod.Get,
             host = "stream.binance.com",
             port = 9443,
-            path = "/stream?streams=$streamPath"
+            path = "/stream?streams=$streams"
         ) {
-
             incoming.consumeEach { frame ->
                 if (frame is Frame.Text) {
                     val text = frame.readText()
-                    val jsonObject = Json.parseToJsonElement(text).jsonObject
-                    val data = jsonObject["data"]
-                    val dto = Json.decodeFromJsonElement<CoinTickerDto>(
-                        data!!
-                    )
+                    val root = Json.parseToJsonElement(text)
+                            .jsonObject
+
+                    val data = root["data"]
+                    val dto = Json.decodeFromJsonElement<BinanceTickerDto>(data!!)
+
                     emit(dto)
                 }
             }

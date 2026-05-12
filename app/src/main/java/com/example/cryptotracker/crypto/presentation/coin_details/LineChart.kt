@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptotracker.crypto.domain.CoinPrice
+import com.example.cryptotracker.crypto.domain.model.CoinPrice
 import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter

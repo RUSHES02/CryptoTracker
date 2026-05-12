@@ -1,7 +1,7 @@
 package com.example.cryptotracker.crypto.presentation.modal
 
 import androidx.annotation.DrawableRes
-import com.example.cryptotracker.crypto.domain.Coin
+import com.example.cryptotracker.crypto.domain.model.Coin
 import com.example.cryptotracker.core.presentation.getDrawableIdForCoin
 import com.example.cryptotracker.crypto.presentation.coin_details.DataPoint
 import java.text.NumberFormat
