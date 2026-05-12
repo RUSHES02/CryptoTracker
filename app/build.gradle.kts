@@ -1,18 +1,18 @@
 plugins {
 	alias(libs.plugins.android.application)
-	alias(libs.plugins.jetbrains.kotlin.android)
+//	alias(libs.plugins.jetbrains.kotlin.android)
 	alias(libs.plugins.compose.compiler)
 	alias(libs.plugins.kotlin.serialization)
 }
 
 android {
 	namespace = "com.example.cryptotracker"
-	compileSdk = 35
+	compileSdk = 36
 	
 	defaultConfig {
 		applicationId = "com.example.cryptotracker"
 		minSdk = 28
-		targetSdk = 35
+		targetSdk = 36
 		versionCode = 1
 		versionName = "1.0"
 		
@@ -36,9 +36,9 @@ android {
 		sourceCompatibility = JavaVersion.VERSION_1_8
 		targetCompatibility = JavaVersion.VERSION_1_8
 	}
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
+    kotlin {
+        jvmToolchain(17)
+    }
 	buildFeatures {
 		buildConfig = true
 		compose = true
