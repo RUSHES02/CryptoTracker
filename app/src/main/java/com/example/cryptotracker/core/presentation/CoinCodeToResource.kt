@@ -675,3 +675,37 @@ fun getDrawableIdForCoin(symbol: String): Int {
         else -> R.drawable.question_sign
     }
 }
+
+//fun getDrawableIdForCoin(symbol: String): Int {
+//
+//    val normalizedSymbol = symbol
+//        .removeSuffix("USDT")
+//        .uppercase()
+//
+//    return when (normalizedSymbol) {
+//        "BTC" -> R.drawable.btc
+//        "ETH" -> R.drawable.eth
+//        "BNB" -> R.drawable.bnb
+//        "SOL" -> R.drawable.sol
+//        "XRP" -> R.drawable.xrp
+//        "DOGE" -> R.drawable.doge
+//        "ADA" -> R.drawable.ada
+//        "DOT" -> R.drawable.dot
+//        "MATIC" -> R.drawable.matic
+//        "AVAX" -> R.drawable.avax
+//        "LINK" -> R.drawable.link
+//        "TRX" -> R.drawable.trx
+//        "LTC" -> R.drawable.ltc
+//        "ATOM" -> R.drawable.atom
+//        "UNI" -> R.drawable.uni
+//        "ETC" -> R.drawable.etc
+//        "XLM" -> R.drawable.xlm
+//        "BCH" -> R.drawable.bch
+//        "FIL" -> R.drawable.fil
+//        "APT" -> R.drawable.question_sign
+//        "ARB" -> R.drawable.question_sign
+//        "OP" -> R.drawable.question_sign
+//
+//        else -> R.drawable.question_sign
+//    }
+//}

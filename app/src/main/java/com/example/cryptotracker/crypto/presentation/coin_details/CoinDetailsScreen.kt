@@ -21,12 +21,17 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -34,19 +39,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptotracker.crypto.presentation.coin_details.components.InfoCard
-import com.example.cryptotracker.crypto.presentation.coin_list.CoinListState
-import com.example.cryptotracker.crypto.presentation.coin_list.components.previewCoin
-import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
+import coil.compose.AsyncImage
 import com.example.cryptotracker.R
-import com.example.cryptotracker.crypto.presentation.modal.toDisplayableNumber
-import com.example.cryptotracker.ui.theme.greenBackground
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.layout.onSizeChanged
+import com.example.cryptotracker.core.presentation.getDrawableIdForCoin
+import com.example.cryptotracker.crypto.presentation.coin_details.components.InfoCard
 import com.example.cryptotracker.crypto.presentation.coin_details.model.ChartStyle
 import com.example.cryptotracker.crypto.presentation.coin_details.model.DataPoint
+import com.example.cryptotracker.crypto.presentation.coin_list.CoinListState
+import com.example.cryptotracker.crypto.presentation.coin_list.components.previewCoin
+import com.example.cryptotracker.crypto.presentation.modal.toDisplayableNumber
+import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
+import com.example.cryptotracker.ui.theme.greenBackground
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

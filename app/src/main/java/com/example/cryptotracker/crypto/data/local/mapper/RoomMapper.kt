@@ -11,6 +11,6 @@ fun CoinEntity.toCoin(): Coin {
         changePercent24h = changePercent24h,
         volume = volume,
         high24h = high24h,
-        low24h = low24h
+        low24h = low24h,
     )
 }

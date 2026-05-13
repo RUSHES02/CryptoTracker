@@ -13,5 +13,5 @@ data class CoinEntity(
     val volume: Double,
     val high24h: Double,
     val low24h: Double,
-    val lastUpdated: Long
+    val lastUpdated: Long,
 )

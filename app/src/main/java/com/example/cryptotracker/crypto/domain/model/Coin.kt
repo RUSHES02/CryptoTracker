@@ -7,5 +7,5 @@ data class Coin (
     val changePercent24h: Double,
     val volume: Double,
     val high24h: Double,
-    val low24h: Double
+    val low24h: Double,
 )

@@ -54,7 +54,7 @@ fun CoinListItem(
 				.size(85.dp)
 		)
 		
-		Column(
+        Column(
 			modifier = Modifier
 				.weight(1f)
 		) {
@@ -112,5 +112,5 @@ internal val previewCoin = Coin(
     changePercent24h = 0.1,
     volume = 1234556754223.22,
     high24h = 46200.12,
-    low24h = 44890.45
+    low24h = 44890.45,
 ).toCoinUi()

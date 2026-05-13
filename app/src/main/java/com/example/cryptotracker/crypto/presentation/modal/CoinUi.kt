@@ -1,10 +1,10 @@
 package com.example.cryptotracker.crypto.presentation.modal
 
-import androidx.annotation.DrawableRes
-import com.example.cryptotracker.crypto.domain.model.Coin
 import com.example.cryptotracker.core.presentation.getDrawableIdForCoin
+import com.example.cryptotracker.crypto.domain.model.Coin
 import com.example.cryptotracker.crypto.presentation.coin_details.model.DataPoint
 import java.text.NumberFormat
+import java.util.Locale
 
 data class CoinUi(
     val symbol: String,
@@ -14,7 +14,6 @@ data class CoinUi(
     val volume: DisplayableNumber,
     val high24h: DisplayableNumber,
     val low24h: DisplayableNumber,
-    @DrawableRes
     val iconRes: Int,
     val coinPriceHistory: List<DataPoint> = emptyList()
 )
@@ -38,7 +37,7 @@ fun Coin.toCoinUi(): CoinUi {
     )
 }
 fun Double.toDisplayableNumber(): DisplayableNumber{
-	val formatter = NumberFormat.getNumberInstance(java.util.Locale.getDefault()).apply {
+	val formatter = NumberFormat.getNumberInstance(Locale.getDefault()).apply {
 		minimumFractionDigits = 2
 		maximumFractionDigits = 2
 	}
