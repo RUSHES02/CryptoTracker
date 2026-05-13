@@ -30,7 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cryptotracker.crypto.domain.model.CoinPrice
+import com.example.cryptotracker.crypto.domain.model.CoinHistoryPoint
 import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -391,51 +391,62 @@ private fun getSelectedDataPoint(
 @Preview(widthDp = 1000)
 @Composable
 private fun LineChartPreview() {
-	CryptoTrackerTheme {
-		val coinHistory = remember {
-			(1..20).map{
-				CoinPrice(
-					priceUsd = Random.nextFloat() * 1000.0,
-					dateTime = ZonedDateTime.now().plusHours(it.toLong())
-				)
-			}
-		}
-		
-		val style = ChartStyle(
-			chartLineColor = Color.Black,
-			unselectedColor = Color(0xff7c7c7c),
-			selectedColor = Color.Black,
-			helperLineThickness = 5f,
-			axisLineThickness = 1f,
-			labelFontSize = 14.sp,
-			minYLabelSpacing = 25.dp,
-			verticalPadding = 8.dp,
-			horizontalPadding = 8.dp,
-			xAxisLabelSpacing = 8.dp
-		)
-		
-		val dataPoints = remember {
-			coinHistory.map {
-				DataPoint(
-					x = it.dateTime.hour.toFloat(),
-					y = it.priceUsd.toFloat(),
-					xLabel = DateTimeFormatter
-						.ofPattern("ha\nM/d")
-						.format(it.dateTime),
-				)
-			}
-		}
-		
-		LineChart(
-			dataPoints = dataPoints,
-			style = style,
-			visibleDataPointsIndices = 0..19,
-			unit = "$",
-			modifier = Modifier
-				.size(700.dp, 300.dp)
-				.background(Color.White),
-			selectedDataPoint = dataPoints[1],
-			
-		)
-	}
+
+    CryptoTrackerTheme {
+
+        val history = remember {
+
+            (0..19).map { index ->
+
+                CoinHistoryPoint(
+                    price = Random.nextDouble(
+                        100.0,
+                        1000.0
+                    ),
+                    dateTime = ZonedDateTime.now()
+                        .plusHours(index.toLong())
+                )
+            }
+        }
+
+        val style = ChartStyle(
+            chartLineColor = Color.Black,
+            unselectedColor = Color(0xff7c7c7c),
+            selectedColor = Color.Black,
+            helperLineThickness = 5f,
+            axisLineThickness = 1f,
+            labelFontSize = 14.sp,
+            minYLabelSpacing = 25.dp,
+            verticalPadding = 8.dp,
+            horizontalPadding = 8.dp,
+            xAxisLabelSpacing = 8.dp
+        )
+
+        val dataPoints = remember(history) {
+
+            history.mapIndexed { index, point ->
+
+                DataPoint(
+                    x = index.toFloat(),
+                    y = point.price.toFloat(),
+                    xLabel = DateTimeFormatter
+                        .ofPattern("ha\nM/d")
+                        .format(point.dateTime)
+                )
+            }
+        }
+
+        LineChart(
+            dataPoints = dataPoints,
+            style = style,
+            visibleDataPointsIndices =
+                dataPoints.indices,
+            unit = "$",
+            modifier = Modifier
+                .size(700.dp, 300.dp)
+                .background(Color.White),
+            selectedDataPoint =
+                dataPoints.getOrNull(1)
+        )
+    }
 }

@@ -2,7 +2,7 @@ package com.example.cryptotracker
 
 import android.app.Application
 import com.example.cryptotracker.di.appModule
-import com.example.cryptotracker.di.repositoryModule
+import com.example.cryptotracker.di.coinModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,7 +15,7 @@ class CoinTrackerApp: Application() {
 			androidLogger()
 			modules(
                 appModule,
-                repositoryModule
+                coinModule
             )
 		}
 	}

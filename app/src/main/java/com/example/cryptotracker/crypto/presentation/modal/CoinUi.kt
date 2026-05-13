@@ -24,16 +24,17 @@ data class DisplayableNumber(
 )
 
 fun Coin.toCoinUi(): CoinUi {
-	return CoinUi(
-		id = id,
-		rank = rank,
-		name = name,
-		symbol = symbol,
-		marketCapUsd = marketCapUsd.toDisplayableNumber(),
-		priceUsd = priceUsd.toDisplayableNumber(),
-		changePercent24Hr = changePercent24Hr.toDisplayableNumber(),
-		iconRes = getDrawableIdForCoin(symbol)
-	)
+    return CoinUi(
+        id = id,
+        rank = rank,
+        name = name,
+        symbol = symbol,
+        marketCapUsd = marketCap.toDisplayableNumber(),
+        priceUsd = price.toDisplayableNumber(),
+        changePercent24Hr = changePercent24h.toDisplayableNumber(),
+//        imageUrl = imageUrl,
+        iconRes = getDrawableIdForCoin(symbol)
+    )
 }
 
 fun Double.toDisplayableNumber(): DisplayableNumber{

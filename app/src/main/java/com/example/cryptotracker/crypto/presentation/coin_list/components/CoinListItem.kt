@@ -106,11 +106,13 @@ private fun CoinListItemPreview(){
 }
 
 internal val previewCoin = Coin(
-	id = "bitcoin",
-	rank = 1,
-	name = "Bitcoin",
-	symbol = "BTC",
-	marketCapUsd = 1234556754223.22,
-	priceUsd = 45562.23,
-	changePercent24Hr = 0.1
+    id = "bitcoin",
+    rank = 1,
+    name = "Bitcoin",
+    symbol = "BTC",
+    imageUrl = "",
+    marketCap = 1234556754223.22,
+    price = 45562.23,
+    changePercent24h = 0.1,
+    binanceSymbol = "BTCUSDT"
 ).toCoinUi()
