@@ -58,17 +58,21 @@ fun CoinListScreen(
 
 @PreviewLightDark
 @Composable
-private fun CoinListScreenPreview(){
-	CryptoTrackerTheme {
-		CoinListScreen(
-			state = CoinListState(
-				coins = (1..10).map {
-					previewCoin.copy(id = it.toString())
-				}
-			),
-			onAction = {},
-			modifier = Modifier
-				.background(MaterialTheme.colorScheme.background)
-		)
-	}
+private fun CoinListScreenPreview() {
+    CryptoTrackerTheme {
+        CoinListScreen(
+            state = CoinListState(
+                coins = (1..10).map { index ->
+                    previewCoin.copy(
+                        symbol = "BTCUSDT$index"
+                    )
+                }
+            ),
+            onAction = {},
+            modifier = Modifier
+                .background(
+                    MaterialTheme.colorScheme.background
+                )
+        )
+    }
 }

@@ -5,8 +5,8 @@ import com.example.cryptotracker.core.data.networking.HttpClientFactory
 import com.example.cryptotracker.crypto.data.CoinRepositoryImpl
 import com.example.cryptotracker.crypto.data.local.dao.CoinDao
 import com.example.cryptotracker.crypto.data.local.database.CoinDatabase
+import com.example.cryptotracker.crypto.data.remote.networking.BinanceApiDataSource
 import com.example.cryptotracker.crypto.data.remote.networking.BinanceSocketDataSource
-import com.example.cryptotracker.crypto.data.remote.networking.CoinGeckoApi
 import com.example.cryptotracker.crypto.domain.CoinRepository
 import com.example.cryptotracker.crypto.presentation.coin_list.CoinListViewModel
 import io.ktor.client.engine.cio.CIO
@@ -18,7 +18,6 @@ import org.koin.dsl.module
 
 val appModule = module {
 	single { HttpClientFactory.create(CIO.create()) }
-//	singleOf(::RemoteCoinDataSource).bind<RemoteCoinDataSource>()
 	viewModelOf(::CoinListViewModel)
 
     single<CoinDatabase> {
@@ -37,7 +36,7 @@ val appModule = module {
 
 val coinModule = module {
 
-    single { CoinGeckoApi(get()) }
+    single { BinanceApiDataSource(get()) }
     single { BinanceSocketDataSource(get()) }
     singleOf(::CoinRepositoryImpl).bind<CoinRepository>()
 }

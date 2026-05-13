@@ -1,13 +1,11 @@
 package com.example.cryptotracker.crypto.domain.model
 
-data class Coin(
-    val id: String,
-    val rank: Int,
-    val name: String,
+data class Coin (
     val symbol: String,
-    val imageUrl: String,
-    val marketCap: Double,
+    val name: String,
     val price: Double,
     val changePercent24h: Double,
-    val binanceSymbol: String
+    val volume: Double,
+    val high24h: Double,
+    val low24h: Double
 )

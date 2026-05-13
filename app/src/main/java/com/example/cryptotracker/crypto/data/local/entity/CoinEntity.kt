@@ -6,14 +6,12 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "coins")
 data class CoinEntity(
     @PrimaryKey
-    val id: String,
-    val rank: Int,
-    val name: String,
     val symbol: String,
-    val imageUrl: String,
-    val marketCap: Double,
+    val name: String,
     val price: Double,
     val changePercent24h: Double,
-    val binanceSymbol: String,
+    val volume: Double,
+    val high24h: Double,
+    val low24h: Double,
     val lastUpdated: Long
 )

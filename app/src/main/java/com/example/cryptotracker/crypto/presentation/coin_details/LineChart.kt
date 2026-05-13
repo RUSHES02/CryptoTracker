@@ -31,6 +31,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cryptotracker.crypto.domain.model.CoinHistoryPoint
+import com.example.cryptotracker.crypto.presentation.coin_details.model.ChartStyle
+import com.example.cryptotracker.crypto.presentation.coin_details.model.DataPoint
+import com.example.cryptotracker.crypto.presentation.coin_details.model.ValueLabel
 import com.example.cryptotracker.ui.theme.CryptoTrackerTheme
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -39,15 +42,15 @@ import kotlin.random.Random
 
 @Composable
 fun LineChart(
-	dataPoints: List<DataPoint>,
-	style: ChartStyle,
-	visibleDataPointsIndices: IntRange,
-	unit: String,
-	modifier: Modifier = Modifier,
-	selectedDataPoint: DataPoint? = null,
-	onSelectedDataPoint: (DataPoint) -> Unit = {},
-	onXLabelWidthChange: (Float) -> Unit = {},
-	showHelperLines: Boolean = true
+    dataPoints: List<DataPoint>,
+    style: ChartStyle,
+    visibleDataPointsIndices: IntRange,
+    unit: String,
+    modifier: Modifier = Modifier,
+    selectedDataPoint: DataPoint? = null,
+    onSelectedDataPoint: (DataPoint) -> Unit = {},
+    onXLabelWidthChange: (Float) -> Unit = {},
+    showHelperLines: Boolean = true
 ) {
 	
 	val textStyle = LocalTextStyle.current.copy(
@@ -136,10 +139,10 @@ fun LineChart(
 		val valueIncrement = (maxYValue - minYValue) / labelCountExcludingLast
 		
 		val yLabels = (0..labelCountExcludingLast).map {
-			ValueLabel(
-				value = maxYValue - (valueIncrement * it),
-				unit = unit,
-			)
+            ValueLabel(
+                value = maxYValue - (valueIncrement * it),
+                unit = unit,
+            )
 		}
 		
 		val yLabelTextLayoutResults = yLabels.map {
@@ -213,9 +216,9 @@ fun LineChart(
 			
 			if (selectedDataPointIndex == index){
 				val valueLabel = ValueLabel(
-					value = visibleDataPoints[index].y,
-					unit = unit
-				)
+                    value = visibleDataPoints[index].y,
+                    unit = unit
+                )
 				val valueResults = measurer.measure(
 					text = valueLabel.format(),
 					style = textStyle.copy(color = style.selectedColor),
@@ -276,11 +279,11 @@ fun LineChart(
 			val x = viewPortLeftX + (it - visibleDataPointsIndices.first) * xLabelWidth + xLabelWidth / 2f
 			val ratio = (dataPoints[it].y - minYValue) / (maxYValue - minYValue)
 			val y = viewPortBottomY - (ratio * viewPortHeightPx)
-			DataPoint(
-				x = x,
-				y = y,
-				xLabel = dataPoints[it].xLabel
-			)
+            DataPoint(
+                x = x,
+                y = y,
+                xLabel = dataPoints[it].xLabel
+            )
 		}
 		Log.d("LineChart", "drawPoints: $drawPoints")
 		val conPoints1 = mutableListOf<DataPoint>()

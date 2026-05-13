@@ -45,6 +45,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.onSizeChanged
+import com.example.cryptotracker.crypto.presentation.coin_details.model.ChartStyle
+import com.example.cryptotracker.crypto.presentation.coin_details.model.DataPoint
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -107,7 +109,7 @@ fun CoinDetailsScreen (
 			) {
 				InfoCard(
 					title = stringResource(R.string.market_cap),
-					formattedString = "$ ${coin.marketCapUsd.formatted}",
+					formattedString = "$ ${coin.priceUsd.formatted}",
 					icon = ImageVector.vectorResource(id = R.drawable.stock)
 				)
 				InfoCard(
@@ -157,17 +159,17 @@ fun CoinDetailsScreen (
 				LineChart(
 					dataPoints = coin.coinPriceHistory,
 					style = ChartStyle(
-						chartLineColor = MaterialTheme.colorScheme.primary,
-						unselectedColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f),
-						selectedColor = MaterialTheme.colorScheme.primary,
-						helperLineThickness = 5f,
-						axisLineThickness = 5f,
-						labelFontSize = 14.sp,
-						minYLabelSpacing = 25.dp,
-						verticalPadding = 8.dp,
-						horizontalPadding = 8.dp,
-						xAxisLabelSpacing = 8.dp
-					),
+                        chartLineColor = MaterialTheme.colorScheme.primary,
+                        unselectedColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f),
+                        selectedColor = MaterialTheme.colorScheme.primary,
+                        helperLineThickness = 5f,
+                        axisLineThickness = 5f,
+                        labelFontSize = 14.sp,
+                        minYLabelSpacing = 25.dp,
+                        verticalPadding = 8.dp,
+                        horizontalPadding = 8.dp,
+                        xAxisLabelSpacing = 8.dp
+                    ),
 					visibleDataPointsIndices = startIndex..coin.coinPriceHistory.lastIndex,
 					unit = "$",
 					modifier = Modifier

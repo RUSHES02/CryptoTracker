@@ -1,4 +1,4 @@
-package com.example.cryptotracker.crypto.presentation.coin_details
+package com.example.cryptotracker.crypto.presentation.coin_details.model
 
 data class DataPoint (
 	val x: Float,

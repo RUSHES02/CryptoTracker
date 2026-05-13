@@ -5,13 +5,16 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class BinanceTickerDto(
-
-    @SerialName("s")
+    @SerialName("symbol")
     val symbol: String,
-
-    @SerialName("c")
-    val currentPrice: String,
-
-    @SerialName("P")
-    val priceChangePercent: String
+    @SerialName("lastPrice")
+    val lastPrice: String,
+    @SerialName("priceChangePercent")
+    val priceChangePercent: String,
+    @SerialName("volume")
+    val volume: String,
+    @SerialName("highPrice")
+    val highPrice: String,
+    @SerialName("lowPrice")
+    val lowPrice: String
 )

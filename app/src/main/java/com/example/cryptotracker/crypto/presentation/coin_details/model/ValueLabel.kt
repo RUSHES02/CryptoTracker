@@ -1,4 +1,4 @@
-package com.example.cryptotracker.crypto.presentation.coin_details
+package com.example.cryptotracker.crypto.presentation.coin_details.model
 
 import java.text.NumberFormat
 import java.util.Locale
@@ -14,11 +14,11 @@ data class ValueLabel(
 				value in 2f..999f -> 2
 				else -> 3
 			}
-			
+
 			maximumFractionDigits = fractionDigits
 			minimumFractionDigits = 0
 		}
-		
+
 		return "${formatter.format(value)} $unit"
 	}
 }
